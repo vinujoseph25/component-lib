@@ -1,0 +1,60 @@
+.hidden {
+  visibility: hidden;
+}
+
+.no-pointer-events {
+  pointer-events: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+@import './remcalc.scss';
+@import './responsive.scss';
+@import './typography.scss';
+
+.inclue-label-above {
+  font-family: EYInterstate-Light;
+  font-size: rem-calc(14);
+  line-height: rem-calc(20);
+  color: $ey-grey-450;
+}
+.inclue-tooltip-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: rem-calc(6);
+  .tooltip {
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+.required-asterisk {
+  color: $ey-red-500;
+  font-family: 'EYInterstate';
+  font-size: rem-calc(14);
+  font-style: normal;
+  font-weight: 700;
+  line-height: rem-calc(20);
+  padding-left: rem-calc(5);
+}
+.required-text{
+  font-family: EYInterstate-Light;
+  font-size: rem-calc(12);
+  line-height: rem-calc(20);
+  color: $ey-grey-450;
+}
+.error-icon-root {
+  &.error-icon-label-above {
+    margin: auto;
+    margin-bottom: rem-calc(5);
+  }
+}

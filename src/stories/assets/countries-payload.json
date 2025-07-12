@@ -1,0 +1,18 @@
+{
+  "data": {
+    "countries": [
+      {
+        "label": "Afghanistan",
+        "value": "AF"
+      },
+      {
+        "label": "Albania",
+        "value": "AL"
+      },
+      {
+        "label": "Algeria",
+        "value": "DZ"
+      }
+    ]
+  }
+}

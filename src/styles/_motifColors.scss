@@ -1,0 +1,246 @@
+// --------------------------------------------------
+// Color Variables - from MOTIF 4.2
+// --------------------------------------------------
+
+// Primary Colors
+$white: #fff;
+$black: #000;
+$yellow-400: #ffe600;
+
+// ----------------------------------------------------
+
+$neutral-light-25: #F9F9FA;
+$neutral-light-50: #F3F3F5;
+$neutral-light-100: #E6E6E9;
+$neutral-light-200: #D7D7DC;
+$neutral-light-300: #C3C3CB;
+$neutral-light-400: #AFAEBA;
+$neutral-light-500: #9897A6;
+$neutral-light-600: #7F7F91;
+$neutral-light-700: #656579;
+$neutral-light-800: #4D4D5C;
+$neutral-light-900: #2E2E38;
+$neutral-light-1000: #23232F;
+$overlay-light-bg-color: #2e2e384d;
+
+$neutral-dark-00: #1A1A24;
+$neutral-dark-25: #23232F;
+$neutral-dark-50: #2E2E38;
+$neutral-dark-100: #33333E;
+$neutral-dark-200: #3F3F4C;
+$neutral-dark-300: #4E4E5D;
+$neutral-dark-400: #5F5F72;
+$neutral-dark-500: #737387;
+$neutral-dark-600: #8A8A9B;
+$neutral-dark-700: #A4A3B1;
+$neutral-dark-800: #BFBFC8;
+$neutral-dark-900: #DEDEE2;
+$overlay-dark-bg-color: #f2f2f64d;
+
+$ey-orange-25: #FCF5F0;
+$ey-orange-50: #FCD9BC;
+$ey-orange-100: #FDBC84;
+$ey-orange-200: #FF9831;
+$ey-orange-300: #EE8300;
+$ey-orange-400: #D07200;
+$ey-orange-500: #B26100;
+$ey-orange-600: #975100;
+$ey-orange-700: #7B4100;
+$ey-orange-800: #623300;
+$ey-orange-900: #462602;
+
+$ey-red-25: #FCF5F3;
+$ey-red-50: #FCD7CF;
+$ey-red-100: #FDBAAB;
+$ey-red-200: #FF9783;
+$ey-red-300: #FF735E;
+$ey-red-400: #FF4136;
+$ey-red-500: #EA011D;
+$ey-red-600: #C70117;
+$ey-red-700: #A40011;
+$ey-red-800: #83000B;
+$ey-red-900: #610402;
+
+$ey-maroon-25: #FAF5F8;
+$ey-maroon-50: #F2D9E8;
+$ey-maroon-100: #ECBDDA;
+$ey-maroon-200: #E79ECD;
+$ey-maroon-300: #E180C0;
+$ey-maroon-400: #DA5BB3;
+$ey-maroon-500: #B14891;
+$ey-maroon-600: #A04082;
+$ey-maroon-700: #82336A;
+$ey-maroon-800: #682754;
+$ey-maroon-900: #4C1C3D;
+
+$ey-purple-25: #F8F6FA;
+$ey-purple-50: #E5DCF1;
+$ey-purple-100: #D4C4EA;
+$ey-purple-200: #C2ABE3;
+$ey-purple-300: #B094DC;
+$ey-purple-400: #9D7CD4;
+$ey-purple-500: #8965CC;
+$ey-purple-600: #724BC3;
+$ey-purple-700: #5E36BC;
+$ey-purple-800: #4A279F;
+$ey-purple-900: #361C75;
+
+$ey-blue-25: #F4F7FC;
+$ey-blue-50: #D2E1FA;
+$ey-blue-100: #AFCDFB;
+$ey-blue-200: #85B9FD;
+$ey-blue-300: #55A6FC;
+$ey-blue-400: #188CE5;
+$ey-blue-500: #1275C1;
+$ey-blue-600: #0F69AE;
+$ey-blue-700: #0A558E;
+$ey-blue-800: #064372;
+$ey-blue-900: #083153;
+
+$ey-green-25: #E7FCE8;
+$ey-green-50: #73FA90;
+$ey-green-100: #48E674;
+$ey-green-200: #34CE63;
+$ey-green-300: #2DB757;
+$ey-green-400: #26A04B;
+$ey-green-500: #1F893F;
+$ey-green-600: #197335;
+$ey-green-700: #125E29;
+$ey-green-800: #0C4A1F;
+$ey-green-900: #0A3616;
+
+$ey-teal-25: #E1FCFB;
+$ey-teal-50: #60F6F3;
+$ey-teal-100: #44E0DE;
+$ey-teal-200: #2FC9C7;
+$ey-teal-300: #27ACAA;
+$ey-teal-400: #229B9A;
+$ey-teal-500: #1D8583;
+$ey-teal-600: #17706F;
+$ey-teal-700: #105B5A;
+$ey-teal-800: #0B4847;
+$ey-teal-900: #093434;
+
+// Custom Colors
+$ey-grey-450: #3A3A4A;
+
+:export {
+    yellow-400: $yellow-400;
+    white: $white;
+    black: $black;
+
+    neutral_light_25: $neutral-light-25;
+    neutral_light_50: $neutral-light-50;
+    neutral_light_100: $neutral-light-100;
+    neutral_light_200: $neutral-light-200;
+    neutral_light_300: $neutral-light-300;
+    neutral-light_400: $neutral-light-400;
+    neutral_light_500: $neutral-light-500;
+    neutral_light_600: $neutral-light-600;
+    neutral_light_700: $neutral-light-700;
+    neutral_light_800: $neutral-light-800;
+    neutral_light_900: $neutral-light-900;
+    neutral_light_1000: $neutral-light-1000;
+    overlay_light_bg_color: $overlay-light-bg-color;
+
+    neutral_dark_00: $neutral-dark-00;
+    neutral_dark_25: $neutral-dark-25;
+    neutral_dark_50: $neutral-dark-50;
+    neutral_dark_100: $neutral-dark-100;
+    neutral_dark_200: $neutral-dark-200;
+    neutral_dark_300: $neutral-dark-300;
+    neutral_dark_400: $neutral-dark-400;
+    neutral_dark_500: $neutral-dark-500;
+    neutral_dark_600: $neutral-dark-600;
+    neutral_dark_700: $neutral-dark-700;
+    neutral_dark_800: $neutral-dark-800;
+    neutral_dark_900: $neutral-dark-900;
+    overlay_dark_bg_color: $overlay-dark-bg-color;
+
+    ey_orange_25: $ey-orange-25;
+    ey_orange_50: $ey-orange-50;
+    ey_orange_100: $ey-orange-100;
+    ey_orange_200: $ey-orange-200;
+    ey_orange_300: $ey-orange-300;
+    ey_orange_400: $ey-orange-400;
+    ey_orange_500: $ey-orange-500;
+    ey_orange_600: $ey-orange-600;
+    ey_orange_700: $ey-orange-700;
+    ey_orange_800: $ey-orange-800;
+    ey_orange_900: $ey-orange-900;
+
+    ey_red_25: $ey-red-25;
+    ey_red_50: $ey-red-50;
+    ey_red_100: $ey-red-100;
+    ey_red_200: $ey-red-200;
+    ey_red_300: $ey-red-300;
+    ey_red_400: $ey-red-400;
+    ey_red_500: $ey-red-500;
+    ey_red_600: $ey-red-600;
+    ey_red_700: $ey-red-700;
+    ey_red_800: $ey-red-800;
+    ey_red_900: $ey-red-900;
+
+    ey_maroon_25: $ey-maroon-25;
+    ey_maroon_50: $ey-maroon-50;
+    ey_maroon_100: $ey-maroon-100;
+    ey_maroon_200: $ey-maroon-200;
+    ey_maroon_300: $ey-maroon-300;
+    ey_maroon_400: $ey-maroon-400;
+    ey_maroon_500: $ey-maroon-500;
+    ey_maroon_600: $ey-maroon-600;
+    ey_maroon_700: $ey-maroon-700;
+    ey_maroon_800: $ey-maroon-800;
+    ey_maroon_900: $ey-maroon-900;
+
+    ey_purple_25: $ey-purple-25;
+    ey_purple_50: $ey-purple-50;
+    ey_purple_100: $ey-purple-100;
+    ey_purple_200: $ey-purple-200;
+    ey_purple_300: $ey-purple-300;
+    ey_purple_400: $ey-purple-400;
+    ey_purple_500: $ey-purple-500;
+    ey_purple_600: $ey-purple-600;
+    ey_purple_700: $ey-purple-700;
+    ey_purple_800: $ey-purple-800;
+    ey_purple_900: $ey-purple-900;
+
+    ey_blue_25: $ey-blue-25;
+    ey_blue_50: $ey-blue-50;
+    ey_blue_100: $ey-blue-100;
+    ey_blue_200: $ey-blue-200;
+    ey_blue_300: $ey-blue-300;
+    ey_blue_400: $ey-blue-400;
+    ey_blue_500: $ey-blue-500;
+    ey_blue_600: $ey-blue-600;
+    ey_blue_700: $ey-blue-700;
+    ey_blue_800: $ey-blue-800;
+    ey_blue_900: $ey-blue-900;
+
+    ey_green_25: $ey-green-25;
+    ey_green_50: $ey-green-50;
+    ey_green_100: $ey-green-100;
+    ey_green_200: $ey-green-200;
+    ey_green_300: $ey-green-300;
+    ey_green_400: $ey-green-400;
+    ey_green_500: $ey-green-500;
+    ey_green_600: $ey-green-600;
+    ey_green_700: $ey-green-700;
+    ey_green_800: $ey-green-800;
+    ey_green_900: $ey-green-900;
+
+    ey_teal_25: $ey-teal-25;
+    ey_teal_50: $ey-teal-50;
+    ey_teal_100: $ey-teal-100;
+    ey_teal_200: $ey-teal-200;
+    ey_teal_300: $ey-teal-300;
+    ey_teal_400: $ey-teal-400;
+    ey_teal_500: $ey-teal-500;
+    ey_teal_600: $ey-teal-600;
+    ey_teal_700: $ey-teal-700;
+    ey_teal_800: $ey-teal-800;
+    ey_teal_900: $ey-teal-900;
+
+    // Custom Colors
+    ey_grey_450: $ey-grey-450;
+}

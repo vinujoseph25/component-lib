@@ -1,0 +1,43 @@
+name: $(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+# CI/CD for building and publishing the uicompoennts storybook package
+
+trigger:
+  branches:
+    include:
+    - develop
+pool: Inclue Linux Agent Pool
+
+variables:
+  isRelease:  ${{ eq(variables['Build.SourceBranchName'], 'master') }}
+
+steps:
+- script: |
+    echo $(Build.SourceBranchName)
+    echo $(isRelease)
+  displayName: $(isRelease)
+
+- task: NodeTool@0
+  inputs:
+    versionSource: 'spec'
+    versionSpec: '18.12.1'
+
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    command: install
+    verbose: false
+
+- task: Npm@1
+  displayName: 'npm run storybook build'
+  inputs:
+    command: custom
+    customCommand: 'run build-storybook'
+    verbose: true
+    
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: storybook-static
+    ArtifactName: release
+    publishLocation: Container
+

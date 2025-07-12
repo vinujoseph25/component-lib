@@ -1,0 +1,49 @@
+diff --git a/node_modules/rc-tree/es/NodeList.js b/node_modules/rc-tree/es/NodeList.js
+index 826a8cd..78bcc60 100644
+--- a/node_modules/rc-tree/es/NodeList.js
++++ b/node_modules/rc-tree/es/NodeList.js
+@@ -60,12 +60,16 @@ function itemKey(item) {
+   return getKey(key, pos);
+ }
+ function getAccessibilityPath(item) {
+-  var path = String(item.data.key);
++  var path = item.title;//String(item.data.key);
+   var current = item;
++
++  let level = 1;
+   while (current.parent) {
++    level++;
+     current = current.parent;
+-    path = "".concat(current.data.key, " > ").concat(path);
++    path = "".concat(current.title, " > ").concat(path);
+   }
++  path = `Level ${level}, ${path}`;
+   return path;
+ }
+ var NodeList = /*#__PURE__*/React.forwardRef(function (props, ref) {
+@@ -196,10 +200,11 @@ var NodeList = /*#__PURE__*/React.forwardRef(function (props, ref) {
+     dropPosition: dropPosition,
+     keyEntities: keyEntities
+   };
+-  return /*#__PURE__*/React.createElement(React.Fragment, null, focused && activeItem && /*#__PURE__*/React.createElement("span", {
++  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", {
+     style: HIDDEN_STYLE,
+     "aria-live": "assertive"
+-  }, getAccessibilityPath(activeItem)), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("input", {
++  }, focused && activeItem ? getAccessibilityPath(activeItem) : ""), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("input", {
++    "aria-hidden": true,
+     style: HIDDEN_STYLE,
+     disabled: focusable === false || disabled,
+     tabIndex: focusable !== false ? tabIndex : null,
+diff --git a/node_modules/rc-tree/es/TreeNode.js b/node_modules/rc-tree/es/TreeNode.js
+index 196bb38..8c20224 100644
+--- a/node_modules/rc-tree/es/TreeNode.js
++++ b/node_modules/rc-tree/es/TreeNode.js
+@@ -295,6 +295,7 @@ var InternalTreeNode = /*#__PURE__*/function (_React$Component) {
+         className: "".concat(prefixCls, "-title")
+       }, titleNode);
+       return /*#__PURE__*/React.createElement("span", {
++        role: _this.isSelectable() ? "button" : "",
+         ref: _this.setSelectHandle,
+         title: typeof title === 'string' ? title : '',
+         className: classNames("".concat(wrapClass), "".concat(wrapClass, "-").concat(_this.getNodeState() || 'normal'), !disabled && (selected || dragNodeHighlight) && "".concat(prefixCls, "-node-selected")),

@@ -1,0 +1,44 @@
+# Gated build for UIComponents
+
+trigger: none
+pool: Inclue Linux Agent Pool
+
+steps:
+- script: |
+    echo $(Build.SourceBranchName)
+
+- task: NodeTool@0
+  inputs:
+    versionSource: 'spec'
+    versionSpec: '18.12.1'
+    
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    command: install
+    verbose: false
+
+- task: Npm@1
+  displayName: 'npm run lint '
+  inputs:
+    command: custom
+    customCommand: 'run lint'
+    verbose: false
+    
+- task: CmdLine@2
+  displayName: 'run cypress test'
+  inputs:
+    script: 'npm run test:ci'
+
+- task: PublishTestResults@2
+  displayName: 'Publish Test Results **/test-output-*.xml'
+  inputs:
+    testResultsFiles: '**/test-output-*.xml'
+    testRunTitle: 'Cypress Integration tests'
+
+- task: Npm@1
+  displayName: 'npm run build:pkg '
+  inputs:
+    command: custom
+    customCommand: 'run build:pkg'
+    verbose: false

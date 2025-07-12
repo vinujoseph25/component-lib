@@ -1,0 +1,23 @@
+.filter-icon-container {
+  border: 1px solid $grey-250;
+  width: 65px;
+  height: 45px;
+  z-index: 1000;
+  .filter-text {
+    display: block;
+    font-size: 0.85714rem;
+    color: $black;
+    font-family: 'EYInterstate Light';
+    font-weight: 300;
+  }
+}
+
+.popout-items {
+  margin: 0px !important;
+}
+
+.inclue-popout.popout-active {
+  .filter-icon-container {
+    border: none;
+  }
+}

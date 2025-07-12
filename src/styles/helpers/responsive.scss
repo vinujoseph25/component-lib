@@ -1,0 +1,157 @@
+@mixin breakpoint($class, $ignoreZoom: false) {
+  @if $class == xs {
+    @media (max-width: 599px) {
+      @if $ignoreZoom == false {
+        body:not(.is-zoomed) & {
+          @content;
+        }
+      } @else {
+        @content;
+      }
+    }
+  } @else if $class == sm {
+    @media (min-width: 600px) {
+      @if $ignoreZoom == false {
+        body:not(.is-zoomed) & {
+          @content;
+        }
+      } @else {
+        @content;
+      }
+    }
+  } @else if $class == md {
+    @media (min-width: 960px) {
+      @if $ignoreZoom == false {
+        body:not(.is-zoomed) & {
+          @content;
+        }
+      } @else {
+        @content;
+      }
+    }
+  } @else if $class == lg {
+    @media (min-width: 1280px) {
+      @if $ignoreZoom == false {
+        body:not(.is-zoomed) & {
+          @content;
+        }
+      } @else {
+        @content;
+      }
+    }
+  } @else if $class == xl {
+    @media (min-width: 1920px) {
+      @if $ignoreZoom == false {
+        body:not(.is-zoomed) & {
+          @content;
+        }
+      } @else {
+        @content;
+      }
+    }
+  } @else if $class == smMax {
+    @media (max-width: 600px) {
+      @if $ignoreZoom == false {
+        body:not(.is-zoomed) & {
+          @content;
+        }
+      } @else {
+        @content;
+      }
+    }
+  } @else if $class == mdMax {
+    @media (max-width: 960px) {
+      @if $ignoreZoom == false {
+        body:not(.is-zoomed) & {
+          @content;
+        }
+      } @else {
+        @content;
+      }
+    }
+  } @else if $class == lgMax {
+    @media (max-width: 1280px) {
+      @if $ignoreZoom == false {
+        body:not(.is-zoomed) & {
+          @content;
+        }
+      } @else {
+        @content;
+      }
+    }
+  } @else if $class == xlMax {
+    @media (max-width: 1920px) {
+      @if $ignoreZoom == false {
+        body:not(.is-zoomed) & {
+          @content;
+        }
+      } @else {
+        @content;
+      }
+    }
+  } @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg";
+  }
+}
+
+@mixin breakpointMaxWidth($size, $ignoreZoom) {
+  @if $ignoreZoom == true {
+    @media (max-width: $size) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-width: $size) {
+      @content;
+    }
+  }
+}
+
+@mixin breakpointMinWidth($size, $ignoreZoom) {
+  @if $ignoreZoom == true {
+    @media (min-width: $size) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $size) {
+      @content;
+    }
+  }
+}
+
+@mixin breakpointV2($class, $ignoreZoom: false) {
+  @if $class == sm {
+    @include breakpointMinWidth(600px, $ignoreZoom) {
+      @content;
+    }
+  } @else if $class == md {
+    @include breakpointMinWidth(960px, $ignoreZoom) {
+      @content;
+    }
+  } @else if $class == lg {
+    @include breakpointMinWidth(1280px, $ignoreZoom) {
+      @content;
+    }
+  } @else if $class == xl {
+    @include breakpointMinWidth(1920px, $ignoreZoom) {
+      @content;
+    }
+  } @else if $class == smMax {
+    @include breakpointMaxWidth(600px, $ignoreZoom) {
+      @content;
+    }
+  } @else if $class == mdMax {
+    @include breakpointMaxWidth(960px, $ignoreZoom) {
+      @content;
+    }
+  } @else if $class == lgMax {
+    @include breakpointMaxWidth(1280px, $ignoreZoom) {
+      @content;
+    }
+  } @else if $class == xlMax {
+    @include breakpointMaxWidth(1920px, $ignoreZoom) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg";
+  }
+}

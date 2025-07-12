@@ -1,0 +1,145 @@
+pre.code {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.sb-show-main {
+  margin: 1.5rem;
+  width: auto;
+}
+
+.p-text {
+  font-family: 'EYInterstate-Light';
+}
+
+.list {
+  font-family: 'EYInterstate-Light';
+  li {
+    margin-bottom: 5px;
+  }
+}
+
+.bold {
+  font-family: 'EYInterstate-bold';
+}
+
+/* if there is native support (chrome/edge chromium so far) use :focus-visible WITHOUT polyfill */
+html:not(.js-focus-visible) {
+  input.focus-visible:focus-visible,
+  textarea.focus-visible:focus-visible,
+  button:focus-visible,
+  a:focus-visible,
+  div.focus-visible[role='gridcell'],
+  [role=gridcell]:focus-visible,
+  [type='button']:focus-visible,
+  [tabindex='0']:focus-visible {
+    outline: 2px dashed $blue-500;
+    outline-offset: -1px;
+  }
+
+  .header-container {
+    // a11y - need white outline b/c of dark bg
+    *:focus-visible {
+      outline: 2px dashed $blue-200;
+    }
+  }
+
+  .link-button {
+    &:focus-visible {
+      outline: 2px dashed $blue-200;
+    }
+  }
+
+  .inclue-header-menu {
+    *:focus-visible {
+      outline: 2px dashed $blue-200;
+    }
+  }
+
+  body.focus-visible-within {
+    .tab-focus-outline {
+      .dropdown-control__control--is-focused {
+        outline: none;
+      }
+    }
+  }
+}
+
+/* a11y global focus */
+body {
+  &.dark-theme {
+    .textinput-root:focus-within,
+    .dropdown-custom:focus-within,
+    button:focus,
+    a:focus,
+    [type='button']:focus,
+    [tabindex='0']:focus {
+      outline: 2px dashed $blue-200;
+      outline-offset: -1px;
+    }
+  }
+  &.light-theme {
+    .textinput-root:focus-within,
+    .dropdown-custom:focus-within,
+    button:focus,
+    a:focus,
+    [type='button']:focus,
+    [tabindex='0']:focus {
+      outline: 2px dashed $blue-500;
+      outline-offset: -1px;
+    }
+  }
+}
+
+/* this works via polyfill due to the :focus-visible still being W3C work-in-progress */
+.js-focus-visible {
+  /* a11y global focus */
+  input:focus,
+  textarea:focus,
+  button:focus,
+  a:focus,
+  [type='button']:focus,
+  [tabindex='0']:focus {
+    outline: 2px dashed $blue-500;
+    outline-offset: -1px;
+  }
+
+  :focus:not([data-focus-visible-added]) {
+    outline: none !important;
+  }
+
+  body.focus-visible-within {
+    .tab-focus-outline:focus-within {
+      outline: 2px dashed $blue-500;
+      outline-offset: -1px;
+    }
+  }
+}
+
+.ag-theme-material .ag-keyboard-focus .ag-header-cell:focus:after {
+  border: none !important;
+  outline: 2px dashed $blue-500;
+}
+
+.trip-leg-one-way-cell-renderer {
+  display: flex;
+
+  .status {
+    padding-top: rem-calc(10);
+    min-width: max-content;
+    display: flex;
+
+    .status-item-text {
+      width: 100%;
+      color: $grey-500;
+    }
+    .icon {
+      margin-right: rem-calc(4);
+      padding-bottom: rem-calc(2);
+    }
+  }
+}

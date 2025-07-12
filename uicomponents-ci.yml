@@ -1,0 +1,54 @@
+name: $(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+ 
+# CI/CD for building and publishing the uicompoennts package
+
+trigger:
+  branches:
+    include:
+    - release/*
+    - develop
+pool: Inclue Linux Agent Pool
+
+variables:
+  isRelease:  ${{ not(eq(variables['Build.SourceBranchName'], 'develop')) }}
+  
+steps:
+- script: |
+    echo $(Build.SourceBranchName)
+    echo $(isRelease)
+  displayName: $(isRelease)
+
+- task: NodeTool@0
+  inputs:
+    versionSource: 'spec'
+    versionSpec: '18.12.1'
+
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    command: install
+    verbose: false
+
+- task: Npm@1
+  displayName: 'npm run changelog '
+  inputs:
+    command: custom
+    customCommand: 'run changelog'
+    verbose: false
+
+- task: Npm@1
+  displayName: 'npm run build:pkg '
+  inputs:
+    command: custom
+    customCommand: 'run build:pkg'
+    verbose: false
+
+- task: Npm@1
+  displayName: 'npm run release '
+  inputs:
+    command: custom
+    customCommand: 'run release'
+    publishRegistry: useFeed
+    publishFeed: Inclue/UIComponents
+    verbose: false
+    

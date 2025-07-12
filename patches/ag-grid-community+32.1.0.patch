@@ -1,0 +1,180 @@
+diff --git a/node_modules/ag-grid-community/dist/ag-grid-community.js b/node_modules/ag-grid-community/dist/ag-grid-community.js
+index 5cf7279..76690d3 100644
+--- a/node_modules/ag-grid-community/dist/ag-grid-community.js
++++ b/node_modules/ag-grid-community/dist/ag-grid-community.js
+@@ -43313,13 +43313,6 @@ var AriaAnnouncementService = class extends BeanStub {
+     this.eGridDiv = beans.eGridDiv;
+   }
+   postConstruct() {
+-    const eDocument = this.gos.getDocument();
+-    const div = this.descriptionContainer = eDocument.createElement("div");
+-    div.classList.add("ag-aria-description-container");
+-    _setAriaLive(div, "polite");
+-    _setAriaRelevant(div, "additions text");
+-    _setAriaAtomic(div, true);
+-    this.eGridDiv.appendChild(div);
+   }
+   /**
+    * @param key used for debouncing calls
+diff --git a/node_modules/ag-grid-community/dist/package/main.cjs.js b/node_modules/ag-grid-community/dist/package/main.cjs.js
+index 1bc68ce..46000b0 100644
+--- a/node_modules/ag-grid-community/dist/package/main.cjs.js
++++ b/node_modules/ag-grid-community/dist/package/main.cjs.js
+@@ -1049,7 +1049,7 @@ function _isNonNullObject(value) {
+ // community-modules/core/src/entities/agColumn.ts
+ var COL_DEF_DEFAULTS = {
+   resizable: true,
+-  sortable: true
++  sortable: false
+ };
+ var instanceIdSequence = 0;
+ function getNextColInstanceId() {
+@@ -41470,15 +41470,6 @@ var AriaAnnouncementService = class extends BeanStub {
+   wireBeans(beans) {
+     this.eGridDiv = beans.eGridDiv;
+   }
+-  postConstruct() {
+-    const eDocument = this.gos.getDocument();
+-    const div = this.descriptionContainer = eDocument.createElement("div");
+-    div.classList.add("ag-aria-description-container");
+-    _setAriaLive(div, "polite");
+-    _setAriaRelevant(div, "additions text");
+-    _setAriaAtomic(div, true);
+-    this.eGridDiv.appendChild(div);
+-  }
+   /**
+    * @param key used for debouncing calls
+    */
+diff --git a/node_modules/ag-grid-community/dist/package/main.esm.mjs b/node_modules/ag-grid-community/dist/package/main.esm.mjs
+index 0125c05..d9bb841 100644
+--- a/node_modules/ag-grid-community/dist/package/main.esm.mjs
++++ b/node_modules/ag-grid-community/dist/package/main.esm.mjs
+@@ -733,7 +733,7 @@ function _isNonNullObject(value) {
+ // community-modules/core/src/entities/agColumn.ts
+ var COL_DEF_DEFAULTS = {
+   resizable: true,
+-  sortable: true
++  sortable: false
+ };
+ var instanceIdSequence = 0;
+ function getNextColInstanceId() {
+@@ -6465,11 +6465,14 @@ function _isFocusableFormField(element) {
+   return focusable;
+ }
+ function _setDisplayed(element, displayed, options = {}) {
++  
+   const { skipAriaHidden } = options;
+   element.classList.toggle("ag-hidden", !displayed);
+   if (!skipAriaHidden) {
+     _setAriaHidden(element, !displayed);
+   }
++  
++  
+ }
+ function _setVisible(element, visible, options = {}) {
+   const { skipAriaHidden } = options;
+@@ -16376,7 +16379,7 @@ var _AbstractHeaderCellCtrl = class _AbstractHeaderCellCtrl extends BeanStub {
+   refreshTabIndex() {
+     const suppressHeaderFocus = this.focusService.isHeaderFocusSuppressed();
+     if (this.eGui) {
+-      _addOrRemoveAttribute(this.eGui, "tabindex", suppressHeaderFocus ? null : "-1");
++      _addOrRemoveAttribute(this.eGui, "tabindex", suppressHeaderFocus ? null : "0");
+     }
+   }
+   onGuiKeyDown(e) {
+@@ -20527,7 +20530,8 @@ var HeaderCellCtrl = class extends AbstractHeaderCellCtrl {
+       const translate = this.localeService.getLocaleTextFunc();
+       const sort = this.beans.sortController.getDisplaySortForColumn(this.column) || null;
+       this.comp.setAriaSort(_getAriaSortState(sort));
+-      this.setAriaDescriptionProperty("sort", translate("ariaSortableColumn", "Press ENTER to sort"));
++      //commenting this code to prevent unwanted A11y announcement over non sortable columns
++      // this.setAriaDescriptionProperty("sort", translate("ariaSortableColumn", "Press ENTER to sort"));
+     } else {
+       this.comp.setAriaSort();
+       this.setAriaDescriptionProperty("sort", null);
+@@ -32739,9 +32743,9 @@ var TabGuardCtrl = class extends BeanStub {
+     }
+     const fromBottom = e.target === this.eBottomGuard;
+     if (this.providedFocusInnerElement) {
+-      this.providedFocusInnerElement(fromBottom);
++      this.providedFocusInnerElement(false);
+     } else {
+-      this.focusInnerElement(fromBottom);
++      this.focusInnerElement(false);
+     }
+   }
+   findNextElementOutsideAndFocus(up) {
+@@ -32808,6 +32812,14 @@ var TabGuardCtrl = class extends BeanStub {
+       this.providedOnTabKeyDown(e);
+       return;
+     }
++
++    if (e.key === 'Tab') {
++      const bottomGuardEl = this.api.gridCore.bottomTabGuard;
++      bottomGuardEl.focus();
++      e.preventDefault();
++      return;
++    }
++
+     if (this.focusTrapActive) {
+       return;
+     }
+@@ -35773,7 +35785,8 @@ var _FocusService = class _FocusService extends BeanStub {
+     this.focusedHeaderPosition = { headerRowIndex, column };
+   }
+   isHeaderFocusSuppressed() {
+-    return this.gos.get("suppressHeaderFocus") || this.overlayService.isExclusive();
++    return this.gos.get("suppressHeaderFocus");
++    //return this.gos.get("suppressHeaderFocus") || this.overlayService.isExclusive();
+   }
+   isCellFocusSuppressed() {
+     return this.gos.get("suppressCellFocus") || this.overlayService.isExclusive();
+@@ -35889,10 +35902,30 @@ var _FocusService = class _FocusService extends BeanStub {
+     if (this.overlayService.isExclusive() && this.focusOverlay()) {
+       return true;
+     }
+-    let firstColumn = this.visibleColsService.getAllCols()[0];
++    var columns = this.visibleColsService.getAllCols();
++    var firstColumn = columns[0];
+     if (!firstColumn) {
+-      return false;
++        return false;
+     }
++
++       /* 
++         * modification to make sure we tab onto the first truly focusable element 
++         * Inclue added support flag of ignoreFocus 
++         *
++         */
++
++       for (var index = 0; index < columns.length; index++) {
++        var col = columns[index];
++
++        if (col.colDef.headerComponentParams && col.colDef.headerComponentParams.ignoreFocus === true) {
++          continue;
++        }
++        
++        firstColumn = col;
++        break;
++
++      }
++
+     if (firstColumn.getParent()) {
+       firstColumn = this.visibleColsService.getColGroupAtLevel(firstColumn, 0);
+     }
+@@ -41154,15 +41187,6 @@ var AriaAnnouncementService = class extends BeanStub {
+   wireBeans(beans) {
+     this.eGridDiv = beans.eGridDiv;
+   }
+-  postConstruct() {
+-    const eDocument = this.gos.getDocument();
+-    const div = this.descriptionContainer = eDocument.createElement("div");
+-    div.classList.add("ag-aria-description-container");
+-    _setAriaLive(div, "polite");
+-    _setAriaRelevant(div, "additions text");
+-    _setAriaAtomic(div, true);
+-    this.eGridDiv.appendChild(div);
+-  }
+   /**
+    * @param key used for debouncing calls
+    */

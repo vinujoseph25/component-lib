@@ -1,0 +1,459 @@
+@mixin cancelHoverEffects {
+  color: $neutral-light-900;
+  cursor: initial;
+}
+
+@mixin loading-button-styles($backgroundColor) {
+  &.inclue-button-loading {
+    &:hover {
+      background-color: $backgroundColor;
+      @include cancelHoverEffects;
+      .inclue-button-label {
+        display: flex;
+        @include cancelHoverEffects;
+      }
+    }
+  }
+}
+
+.inclue-button {
+  &.inclue-button-root {
+    color: $neutral-light-900;
+    height: rem-calc(36);
+    padding: 0 rem-calc(30);
+    box-shadow: none;
+    border-radius: rem-calc(4);
+    text-transform: none;
+    background-color: $yellow-400;
+    border: rem-calc(1) solid $black;
+    font-family: 'EYInterstate-Light';
+    font-weight: 600;
+    font-size: rem-calc(14);
+    line-height: rem-calc(20);
+    &:hover {
+      background-color: $neutral-light-900;
+      color: $white;
+      outline: none !important;
+      .inclue-button-label {
+        display: flex;
+        color: $neutral-light-25;
+      }
+    }
+    &:focus-visible {
+      background-color: $neutral-light-900;
+      color: $white;
+      outline: none;
+      border: rem-calc(2) solid $ey-blue-600;
+    }
+    &.textbutton {
+      background-color: transparent;
+      border: none;
+      width: auto;
+      color: $neutral-light-900;
+      text-decoration: underline;
+
+      &:hover, &:focus-visible {
+        background-color: transparent;
+        border: rem-calc(2) solid $ey-blue-600;
+        .inclue-button-label {
+          display: flex;
+          color: $black;
+        }
+      }
+    }
+    &.textbutton-blue {
+      color: $blue-600;
+      background-color: transparent;
+      border: none;
+      width: auto;
+      &:focus-visible {
+        background-color: transparent;
+        border: rem-calc(2) solid $ey-blue-600;
+        .inclue-button-label {
+          display: flex;
+          color: $blue-600;
+          text-decoration: underline;
+        }
+      }
+      &:hover {
+        .inclue-button-label {
+          display: flex;
+          color: $blue-600;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  @include loading-button-styles($yellow-400);
+
+  .inclue-button-label {
+    display: flex;
+    white-space: nowrap;
+    align-items: center;
+  }
+
+  &.inclue-button-disabled {
+    background-color: $neutral-light-200;
+    border: rem-calc(1) solid $neutral-light-300;
+    pointer-events: all;
+    cursor: not-allowed;
+    &:hover {
+      box-shadow: none;
+      background-color: $neutral-light-200;
+      color: $neutral-light-700;
+      .inclue-button-label {
+        display: flex;
+        color: $neutral-light-700;
+      }
+      &.textbutton,
+      &.textbutton-blue {
+        background-color: $neutral-light-200;
+        text-decoration: none;
+        border: none;
+        .inclue-button-label {
+          display: flex;
+          color: $neutral-light-700;
+          text-decoration: none;
+        }
+      }
+    }
+
+    &.textbutton,
+    &.textbutton-blue {
+      background-color: $neutral-light-200;
+      text-decoration: none;
+    }
+
+    .inclue-button-label {
+      display: flex;
+      color: $neutral-light-700;
+    }
+  }
+
+  .inclue-linear-progress{
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    height: 3px;
+    background-color: transparent;
+  }
+  
+  .bar-color{
+    background-color: $black;
+  }
+
+  &:focus-visible {
+    .bar-color{
+      background-color: $white;
+    }
+  }
+}
+
+.inclue-button {
+  &.secondary {
+    &.inclue-button-root {
+      color: $neutral-light-900;
+      border: rem-calc(1) solid $black;
+      background-color: $white;
+
+      &:hover, &:focus-visible {
+        background-color: $neutral-light-900;
+        color: $neutral-light-25;
+      }
+      
+      &:focus-visible {
+        border: rem-calc(2) solid $ey-blue-600;
+        .inclue-button-label {
+          color: $white;
+        }
+      }
+
+      &.inclue-button-disabled {
+        background-color: $neutral-light-200;
+        border: rem-calc(1) solid $neutral-light-300;
+        .inclue-button-label {
+          display: flex;
+          color: $neutral-light-700;
+        }
+      }
+    }
+    .inclue-button-label {
+      display: flex;
+      color: $neutral-light-900;
+      font-size: rem-calc(14);
+      font-family: 'EYInterstate-Light';
+      line-height: rem-calc(20);
+      align-items: center;
+    }
+
+    @include loading-button-styles($white);
+  }
+
+  &.dark {
+    &.inclue-button-root {
+      color: $neutral-light-25;
+      border: 1px solid $white;
+      background-color: $neutral-light-900;
+      border-radius: rem-calc(4);
+
+      &:hover, &:focus-visible {
+        background-color: $white;
+        color: $neutral-light-900;
+        border: rem-calc(1) solid $neutral-light-900;
+        border-radius: rem-calc(4);
+        .inclue-button-label {
+          display: flex;
+          color: $neutral-light-900;
+          &.btnlabel {
+            color: $neutral-light-25;
+          }
+        }
+      }
+
+    }
+    .inclue-button-label {
+      display: flex;
+      color: $neutral-light-25;
+      font-size: rem-calc(14);
+      font-family: 'EYInterstate-Light';
+      line-height: rem-calc(20);
+      align-items: center;
+      &:hover {
+        color: $neutral-light-900;
+      }
+    }
+    @include loading-button-styles($neutral-light-900);
+  }
+
+  &.secondary-short {
+    &.inclue-button-root {
+      color: $neutral-light-900;
+      border: rem-calc(1) solid $black;
+      height: rem-calc(36);
+      background-color: $white;
+      &:hover, &:focus-visible {
+        background-color: $neutral-light-900;
+        color: $neutral-light-25;
+      }
+    }
+    .inclue-button-label {
+      display: flex;
+      color: $neutral-light-900;
+      font-size: rem-calc(14);
+      font-family: 'EYInterstate-Light';
+      align-items: center;
+    }
+    &.inclue-button-disabled {
+      background-color: $neutral-light-200;
+      border: rem-calc(1) solid $neutral-light-300;
+      .inclue-button-label {
+        display: flex;
+        color: $neutral-light-700;
+      }
+    }
+
+    @include loading-button-styles($white);
+  }
+
+  &.secondary-dark {
+    &.inclue-button-root {
+      color: $neutral-light-900;
+      border: rem-calc(1) solid $black;
+      background-color: $white;
+      &:hover {
+        border: rem-calc(1) solid $yellow-400;
+        background-color: $neutral-light-900;
+        color: $neutral-light-25;
+      }
+      
+      &:focus-visible {
+        border: rem-calc(1) solid $ey-blue-400;
+        background-color: $neutral-light-900;
+        .inclue-button-label {
+          color: $white;
+        }
+      }
+
+      &.inclue-button-disabled {
+        background-color: $neutral-light-200;
+        border: rem-calc(1) solid $neutral-light-300;
+        .inclue-button-label {
+          display: flex;
+          color: $neutral-light-700;
+        }
+      }
+    }
+    .inclue-button-label {
+      display: flex;
+      color: $neutral-light-900;
+      font-size: rem-calc(14);
+      font-family: 'EYInterstate-Light';
+      line-height: rem-calc(20);
+      align-items: center;
+    }
+
+    @include loading-button-styles($white);
+  }
+
+  &.tertiary {
+    &.inclue-button-root {
+      color: $neutral-light-900;
+      border: 1px solid rgba(196, 196, 205, 0.35);
+      background-color: $white;
+      &:hover, &:focus-visible {
+        border: 1px solid rgba(196, 196, 205, 0.35);
+        box-shadow: none;
+        background-color: $neutral-light-900;
+      }
+    }
+    .inclue-button-label {
+      display: flex;
+      color: $neutral-light-900;
+      font-size: rem-calc(14);
+      font-weight: 600;
+      font-family: 'EYInterstate-Light';
+    }
+    &.inclue-button-disabled {
+      background-color: $neutral-light-200;
+      border: rem-calc(1) solid $neutral-light-300;
+      .inclue-button-label {
+        color: $neutral-light-700;
+      }
+    }
+
+    @include loading-button-styles($white);
+  }
+
+  &.tertiary-dark {
+    &.inclue-button-root {
+      color: $white;
+      border: rem-calc(1) solid $white;
+      background-color: $neutral-light-900;
+      &:hover {
+        border: rem-calc(1) solid $yellow-400;
+        box-shadow: none;
+      }
+      &:focus-visible {
+        border: rem-calc(1) solid $ey-blue-400;
+      }
+    }
+    .inclue-button-label {
+      display: flex;
+      color: $white;
+      font-size: rem-calc(14);
+      font-weight: 600;
+      font-family: 'EYInterstate-Light';
+    }
+    &.inclue-button-disabled {
+      background-color: $neutral-light-200;
+      border: rem-calc(1) solid $neutral-light-300;
+      .inclue-button-label {
+        color: $neutral-light-700;
+      }
+    }
+
+    @include loading-button-styles($white);
+  }
+
+  &.icon {
+    &.inclue-button-root {
+      color: $neutral-light-900;
+      width: rem-calc(36);
+      border: rem-calc(1) solid $black;
+      height: rem-calc(36);
+      padding: rem-calc(6);
+      min-width: rem-calc(36);
+      border-radius: rem-calc(4);
+      background-color: $white;
+      &:hover, &:focus-visible {
+        background-color: transparent;
+        border: rem-calc(2) solid $ey-blue-600;
+        .inclue-button-label {
+          color: $neutral-light-900;
+        }
+      }
+    }
+
+    &.inclue-button-disabled {
+      border: none;
+      .inclue-button-label {
+        color: $neutral-light-900;
+      }
+    }
+
+    .inclue-button-label {
+      display: flex;
+      font-size: rem-calc(14);
+      font-family: 'EYInterstate-Light';
+      font-weight: 600;
+      text-transform: capitalize;
+      align-items: center;
+    }
+  }
+
+  &.back-button {
+    &.inclue-button-root {
+      width: auto;
+      border: 0;
+      display: flex;
+      padding: 0;
+      background-color: transparent;
+      &:hover {
+        border: none;
+        box-shadow: 0;
+        background-color: transparent;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .inclue-button-label {
+      display: flex;
+      color: $white;
+      display: flex;
+      position: relative;
+      font-size: rem-calc(14);
+      font-family: 'EYInterstate-Light';
+      font-weight: 600;
+      justify-content: flex-start;
+    }
+  }
+
+  &.back-button-black {
+    &.inclue-button-root {
+      width: auto;
+      border: 0;
+      display: flex;
+      padding: 0;
+      background-color: transparent;
+      &:hover {
+        border: none;
+        box-shadow: 0;
+        background-color: transparent;
+        .inclue-button-label {
+          color: $neutral-light-900;
+        }
+      }
+      &:focus {
+        outline: none;
+        .inclue-button-label {
+          color: $neutral-light-900;
+        }
+      }
+    }
+
+    .inclue-button-label {
+      display: flex;
+      color: $neutral-light-900;
+      display: flex;
+      position: relative;
+      font-size: rem-calc(14);
+      font-family: 'EYInterstate-Light';
+      font-weight: 600;
+      justify-content: flex-start;
+    }
+  }
+}

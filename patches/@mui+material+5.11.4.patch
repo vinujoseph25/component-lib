@@ -1,0 +1,69 @@
+diff --git a/node_modules/@mui/material/Accordion/Accordion.d.ts b/node_modules/@mui/material/Accordion/Accordion.d.ts
+index 01800d8..f691919 100644
+--- a/node_modules/@mui/material/Accordion/Accordion.d.ts
++++ b/node_modules/@mui/material/Accordion/Accordion.d.ts
+@@ -58,6 +58,8 @@ export interface AccordionProps extends StandardProps<PaperProps, 'onChange'> {
+    * By default, the element is based on this [`Transition`](http://reactcommunity.org/react-transition-group/transition/) component.
+    */
+   TransitionProps?: TransitionProps;
++  
++  headerLevel?: 1 | 2 | 3 | 4 | 5 | 6;
+ }
+ 
+ /**
+diff --git a/node_modules/@mui/material/Accordion/Accordion.js b/node_modules/@mui/material/Accordion/Accordion.js
+index 6195e5f..248f032 100644
+--- a/node_modules/@mui/material/Accordion/Accordion.js
++++ b/node_modules/@mui/material/Accordion/Accordion.js
+@@ -126,7 +126,8 @@ const Accordion = /*#__PURE__*/React.forwardRef(function Accordion(inProps, ref)
+       onChange,
+       square = false,
+       TransitionComponent = Collapse,
+-      TransitionProps
++      TransitionProps,
++      headerLevel
+     } = props,
+     other = _objectWithoutPropertiesLoose(props, _excluded);
+   const [expanded, setExpandedState] = useControlled({
+@@ -154,6 +155,11 @@ const Accordion = /*#__PURE__*/React.forwardRef(function Accordion(inProps, ref)
+     disableGutters,
+     expanded
+   });
++
++  const wrapElement = (summary) => {
++    return headerLevel ? React.createElement(`h${headerLevel}`,{style: {margin: 0}},summary) : summary;
++  };
++
+   const classes = useUtilityClasses(ownerState);
+   return /*#__PURE__*/_jsxs(AccordionRoot, _extends({
+     className: clsx(classes.root, className),
+@@ -163,7 +169,7 @@ const Accordion = /*#__PURE__*/React.forwardRef(function Accordion(inProps, ref)
+   }, other, {
+     children: [/*#__PURE__*/_jsx(AccordionContext.Provider, {
+       value: contextValue,
+-      children: summary
++      children: wrapElement(summary)
+     }), /*#__PURE__*/_jsx(TransitionComponent, _extends({
+       in: expanded,
+       timeout: "auto"
+diff --git a/node_modules/@mui/material/Drawer/Drawer.js b/node_modules/@mui/material/Drawer/Drawer.js
+index 6077ae8..3c7fd90 100644
+--- a/node_modules/@mui/material/Drawer/Drawer.js
++++ b/node_modules/@mui/material/Drawer/Drawer.js
+@@ -190,11 +190,15 @@ const Drawer = /*#__PURE__*/React.forwardRef(function Drawer(inProps, ref) {
+       children: drawer
+     }));
+   }
++
++  const isAndroid = /Android/i.test(navigator.userAgent);
++
+   const slidingDrawer = /*#__PURE__*/_jsx(TransitionComponent, _extends({
+     in: open,
+     direction: oppositeDirection[anchorInvariant],
+     timeout: transitionDuration,
+-    appear: mounted.current
++    appear: mounted.current,
++    tabIndex: isAndroid ? null : -1
+   }, SlideProps, {
+     children: drawer
+   }));

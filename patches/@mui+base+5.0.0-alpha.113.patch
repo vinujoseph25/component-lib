@@ -1,0 +1,13 @@
+diff --git a/node_modules/@mui/base/FocusTrap/FocusTrap.js b/node_modules/@mui/base/FocusTrap/FocusTrap.js
+index a121a6c..9fba6b1 100644
+--- a/node_modules/@mui/base/FocusTrap/FocusTrap.js
++++ b/node_modules/@mui/base/FocusTrap/FocusTrap.js
+@@ -120,7 +120,7 @@ function FocusTrap(props) {
+         if (process.env.NODE_ENV !== 'production') {
+           console.error(['MUI: The modal content node does not accept focus.', 'For the benefit of assistive technologies, ' + 'the tabIndex of the node is being set to "-1".'].join('\n'));
+         }
+-        rootRef.current.setAttribute('tabIndex', '-1');
++        // rootRef.current.setAttribute('tabIndex', '-1');
+       }
+       if (activated.current) {
+         rootRef.current.focus();

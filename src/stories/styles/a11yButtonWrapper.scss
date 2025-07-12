@@ -1,0 +1,9 @@
+.trip-panel-example {
+  border: solid 1px #000;
+
+  .trip-panel-info {
+    display: flex;
+    justify-content: space-between;
+    padding: rem-calc(20);
+  }
+}

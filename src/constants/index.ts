@@ -1,0 +1,10 @@
+export enum DATE_FORMATS {
+  DATE_ONLY = 'DD-MMM-YYYY',
+  ISO8601_DATE_TIME = 'YYYY-MM-DD[T]hh:mm:ss[.mmm]TZD',
+  ISO8601_DATE = 'YYYY-MM-DD',
+}
+
+export const VIEW_SIZES = {
+  MAX_MOBILE_PHONE: 600,
+  MAX_MOBILE_TABLET: 960,
+};

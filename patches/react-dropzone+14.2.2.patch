@@ -1,0 +1,13 @@
+diff --git a/node_modules/react-dropzone/dist/es/utils/index.js b/node_modules/react-dropzone/dist/es/utils/index.js
+index e280b90..3c0bb31 100644
+--- a/node_modules/react-dropzone/dist/es/utils/index.js
++++ b/node_modules/react-dropzone/dist/es/utils/index.js
+@@ -300,7 +300,7 @@ export function isSecurityError(v) {
+  */
+ 
+ export function isMIMEType(v) {
+-  return v === "audio/*" || v === "video/*" || v === "image/*" || v === "text/*" || /\w+\/[-+.\w]+/g.test(v);
++  return  v === "application/*" || v === "audio/*" || v === "video/*" || v === "image/*" || v === "text/*" || /\w+\/[-+.\w]+/g.test(v);
+ }
+ /**
+  * Check if v is a file extension.

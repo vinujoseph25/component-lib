@@ -1,0 +1,28 @@
+.panel-color-indicator {
+  box-shadow: rem-calc(5) 0 0 0 $green-500 inset;
+}
+.panel-content-wrapper {
+  display: flex;
+  justify-content: space-between;
+  .panel-content {
+    display: flex;
+    .panel-content-el {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0 rem-calc(20);
+    }
+  }
+}
+.panel-threedot-title {
+  display: flex;
+  .item {
+    padding-left: rem-calc(20);
+  }
+}
+.panel-threedot-content {
+  display: flex;
+  .item {
+    padding-right: rem-calc(40);
+  }
+}

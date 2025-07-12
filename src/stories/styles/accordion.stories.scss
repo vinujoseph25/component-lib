@@ -1,0 +1,42 @@
+.inclue-accordion {
+  &.panelSummaryExpanded {
+    border-bottom: none;
+    .accordion-custom-panel {
+      .status {
+        padding-left: rem-calc(24);
+      }
+    }
+  }
+  .panelTitle {
+    display: flex;
+    width: 100%;
+    .accordion-custom-panel {
+      padding-left: rem-calc(4);
+      .status {
+        display: flex;
+        padding-left: rem-calc(12);
+        .status-icon {
+          margin-top: rem-calc(5);
+          margin-right: rem-calc(5);
+        }
+        .status-label {
+          margin-top: rem-calc(3);
+        }
+      }
+    }
+  }
+  &.draggable {
+    .panelSummaryRoot {
+      height: 60px;
+    }
+    .draggable-accordion {
+      align-items: center;
+      .question-name {
+        color: $grey-550;
+      }
+      .taxonomy-name {
+        color: $grey-400;
+      }
+    }
+  }
+}

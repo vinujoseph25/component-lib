@@ -1,0 +1,100 @@
+@import './_colors';
+@import './_motifColors';
+@import './helpers/_index';
+
+@font-face {
+  font-family: 'EYInterstate';
+  src: url('../assets/fonts/EYInterstate-Regular.eot');
+  src: local('EYInterstate'), url('../assets/fonts/EYInterstate-Regular.woff2') format('woff2'),
+    url('../assets/fonts/EYInterstate-Regular.ttf') format('truetype'), url('../assets/fonts/EYInterstate-Regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'EYInterstate-Regular';
+  src: url('../assets/fonts/EYInterstate-Regular.eot');
+  src: local('EYInterstate-Regular'), url('../assets/fonts/EYInterstate-Regular.woff2') format('woff2'),
+    url('../assets/fonts/EYInterstate-Regular.ttf') format('truetype'), url('../assets/fonts/EYInterstate-Regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'EYInterstate-Light';
+  src: url('../assets/fonts/EYInterstate-Light.eot');
+  src: local('EYInterstate-Light'), url('../assets/fonts/EYInterstate-Light.woff2') format('woff2'),
+    url('../assets/fonts/EYInterstate-Light.ttf') format('truetype'), url('../assets/fonts/EYInterstate-Light.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'EYInterstate-Bold';
+  src: local('EYInterstate Bold'), url('../assets/fonts/EYInterstate-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'EYInterstate-LightBold';
+  src: local('EYInterstate-LightBold'), url('../assets/fonts/EYInterstate-LightBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'EYInterstate', sans-serif;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s, color 5000s ease-in-out 0s;
+}
+
+@keyframes onAutoFillStart {
+  from {
+    /**/
+  }
+  to {
+    /**/
+  }
+}
+@keyframes onAutoFillCancel {
+  from {
+    /**/
+  }
+  to {
+    /**/
+  }
+}
+input:-webkit-autofill {
+  // Expose a hook for JavaScript when autofill is shown
+  // JavaScript can capture 'animationstart' events
+  animation-name: onAutoFillStart;
+}
+
+input:not(:-webkit-autofill) {
+  // Expose a hook for JS onAutoFillCancel
+  // JavaScript can capture 'animationstart' events
+  animation-name: onAutoFillCancel;
+}
+
+// high contrast mode fix for icons
+@media screen and (-ms-high-contrast: active) {
+  svg {
+    fill: ButtonText;
+  }
+}

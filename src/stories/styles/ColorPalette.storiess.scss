@@ -1,0 +1,20 @@
+.color-palette{
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  transition: opacity 225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+.primary-color-box {
+  width: 80px;
+  height: 60px;
+}
+
+.color-palette-text {
+  color: $ey-red-500;
+  padding: 15px;
+}

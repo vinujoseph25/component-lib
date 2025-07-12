@@ -1,0 +1,46 @@
+{
+  "compilerOptions":{
+     "declaration":true,
+     "rootDir":"src",
+     "outDir":"dist",
+     "target":"es5",
+     "importHelpers": true,
+     "lib":[
+        "dom",
+        "dom.iterable",
+        "es5"
+     ],
+     "baseUrl":".",
+     "paths":{
+        "@src":[
+           "src"
+        ],
+        "@src/*":[
+           "src/*"
+        ]
+     },
+     "allowJs":true,
+     "skipLibCheck":true,
+     "esModuleInterop":true,
+     "allowSyntheticDefaultImports":true,
+     "strict":true,
+     "forceConsistentCasingInFileNames":true,
+     "module":"ES2020",
+     "moduleResolution":"node",
+     "resolveJsonModule":true,
+     "isolatedModules":true,
+     "noEmit":false,
+     "jsx":"react",
+     "noImplicitAny":false
+  },
+  "include":[
+     "src/components",
+     "src/hooks",
+     "src/custom.d.ts"
+  ],
+  "exclude": [
+   "src/stories",
+   "src/styles",
+   "src/assets"
+ ]
+}
